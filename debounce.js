@@ -34,13 +34,39 @@ var triggerCount = 0;
 // },800)
 
 // using loadash lib
-const debouncedCount = _.debounce(()=>{
-    count.innerHTML =++triggerCount;
-    console.log(triggerCount)
-},800)
+const debouncedCount = _.debounce(() => {
+  count.innerHTML = ++triggerCount;
+  console.log(triggerCount);
+}, 800);
 
-btn.addEventListener('click',()=>{
-    btnPress.innerHTML =++pressedCount;
-    debouncedCount(count);
-})
+btn.addEventListener("click", () => {
+  btnPress.innerHTML = ++pressedCount;
+  debouncedCount(count);
+});
+
+//controling the event -> debouncing
+const debounce = (fn,delay=1000)=>{
+    let timer;//clousre ka use hua hai 
+    return(...args)=>{
+        clearTimeout(timer)
+      timer = setTimeout(() => {
+            fn(...args)
+        }, delay);
+    }
+}
+//debouncde ek function return karna chiaye 
+
+const handler = async (e) => {
+  const response = await fetch(
+    `https://dummyjson.com/products/search?q=${e.target.value}`
+  );
+  const data = await response.json();
+  console.log(data.products);
+  console.log("event", e.target.value);
+};
+const input = document.getElementById("input");
+const debounced = debounce(handler,1000)
+// //1000 ms k baad debounce function call kiya jaye 
+// //har ek keystroke k uper
+input.addEventListener("input",debounced);
 

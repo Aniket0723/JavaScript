@@ -33,24 +33,25 @@
 
 // let person = {name:'John'}
 // let newPerson = Object.assign({},person)
+// console.log(newPerson)
 // Two argument 1st one Target 2nd Source
 
-// let addressObject = {city:"Wani",state:"Maharashtra"}
-// let person = {
-//     name:'John',
-//     address: addressObject,
-// }
-// console.log(addressObject)
-// console.log(person)
+let addressObject = {city:"Wani",state:"Maharashtra"}
+let person = {
+    name:'John',
+    address: addressObject,
+}
+console.log(addressObject)
+console.log(person)
 
-// let shallowCopyofAddresObject = Object.assign({},addressObject)
-// shallowCopyofAddresObject.city= 'Pune'
-// console.log(shallowCopyofAddresObject,addressObject)
+let shallowCopyofAddresObject = Object.assign({},addressObject)
+shallowCopyofAddresObject.city= 'Pune'
+console.log(shallowCopyofAddresObject,addressObject)
 
-// let sCopy = Object.assign({},person)
-// sCopy.name='Aniket'
-// sCopy.address.city = 'Nagpur'
-// console.log(sCopy,person)
+let sCopy = Object.assign({},person)
+sCopy.name='Aniket'
+sCopy.address.city = 'Nagpur'
+console.log(sCopy,person)
 
 
 // 2 Spread Operator
